@@ -90,10 +90,17 @@ Visit the URL and test the application by uploading a receipt image.
 
 ## Troubleshooting
 
+### ImportError with OpenCV (cv2)
+If you see an error like `ImportError: This app has encountered an error` related to `cv2`:
+- The app uses `opencv-python-headless` which is better for server environments
+- Make sure you've pulled the latest code with the updated `requirements.txt`
+- Redeploy the app after updating requirements.txt
+
 ### App fails to start
 - Check that all required environment variables are set in Streamlit Cloud secrets
 - Verify that the API keys are correct
 - Check the logs in Streamlit Cloud dashboard
+- Ensure Python version is 3.11 or 3.12 (set in Streamlit Cloud app settings if needed)
 
 ### OCR not working
 - Verify your API key is valid and has sufficient credits/quota
