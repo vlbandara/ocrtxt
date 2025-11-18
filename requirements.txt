@@ -4,6 +4,7 @@ streamlit
 pillow>=9.0.0
 
 # Image Processing
+# Use headless version for server/cloud deployments (no GUI dependencies)
 opencv-python-headless>=4.8.0,<5.0.0
 numpy>=1.21.0,<2.0.0
 pdf2image>=1.16.0

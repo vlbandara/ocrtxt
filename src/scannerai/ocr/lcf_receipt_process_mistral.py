@@ -124,10 +124,18 @@ Important:
             raise ValueError(f"Unsupported file type: {file_type}")
 
         if debug_mode:
-            opencv_img = np.array(image)
-            opencv_img = opencv_img[:, :, ::-1].copy()
-            cv2.imshow(f"input image: {file_path}", opencv_img)
-            cv2.waitKey(0)
+            # Only show image if not in headless environment (e.g., Streamlit Cloud)
+            try:
+                opencv_img = np.array(image)
+                opencv_img = opencv_img[:, :, ::-1].copy()
+                # Check if we can use GUI functions (not available in headless)
+                cv2.namedWindow("test", cv2.WINDOW_NORMAL)
+                cv2.destroyWindow("test")
+                cv2.imshow(f"input image: {file_path}", opencv_img)
+                cv2.waitKey(0)
+            except cv2.error:
+                # Headless environment - skip GUI operations
+                print(f"Debug mode: Skipping image display (headless environment)")
 
         # Enhanced image preprocessing
         original_size = image.size
