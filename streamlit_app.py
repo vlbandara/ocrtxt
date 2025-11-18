@@ -2,8 +2,12 @@
 import sys
 import os
 
-# Add the project root to the path
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Get the project root directory
+project_root = os.path.dirname(os.path.abspath(__file__))
+
+# Add the project root and src directory to the path
+sys.path.insert(0, project_root)
+sys.path.insert(0, os.path.join(project_root, "src"))
 
 # Import and run the main Streamlit app
 from scripts.lcf_receipt_entry_streamlit import main
