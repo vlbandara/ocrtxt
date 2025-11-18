@@ -1,0 +1,19 @@
+# Debug and Processing Settings
+DEBUG_MODE=False
+ENABLE_PREPROCESSING=False
+SAVE_PROCESSED_IMAGE=False
+ENABLE_PRICE_COUNT=True
+
+# OCR Model Selection (1: Tesseract+GPT-3.5, 2: GPT-4-Vision, 3: Gemini, 4: Mistral AI - Fast & Reliable)
+OCR_MODEL=4
+
+# Model Paths
+CLASSIFIER_MODEL_PATH=/Users/vinodlahiru/Downloads/receipt_scanner-main/src/scannerai/classifiers/trainedModels/LRCountVectorizer.sav
+LABEL_ENCODER_PATH=/Users/vinodlahiru/Downloads/receipt_scanner-main/src/scannerai/classifiers/trainedModels/encoder.pkl
+
+# API Keys
+GEMINI_API_KEY_PATH=/Users/vinodlahiru/Downloads/receipt_scanner-main/gemini_api_key.txt
+GOOGLE_CREDENTIALS_PATH=/Users/vinodlahiru/Downloads/receipt_scanner-main/gemini-receipt-scanner-90909a7b587f.json
+MISTRAL_API_KEY_PATH=/Users/vinodlahiru/Downloads/receipt_scanner-main/mistral_api_key.txt
+
+
