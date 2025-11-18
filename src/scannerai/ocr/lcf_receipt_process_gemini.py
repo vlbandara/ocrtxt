@@ -191,16 +191,17 @@ class LCFReceiptProcessGemini:
 
         if debug_mode:  # Use the passed debug_mode parameter
             # Only show image if not in headless environment (e.g., Streamlit Cloud)
-            try:
-                opencv_img = np.array(image)
-                opencv_img = opencv_img[:, :, ::-1].copy()
-                # Check if we can use GUI functions (not available in headless)
-                cv2.namedWindow("test", cv2.WINDOW_NORMAL)
-                cv2.destroyWindow("test")
-                cv2.imshow(f"input image: {file_path}", opencv_img)
-                cv2.waitKey(0)
-            except cv2.error:
-                # Headless environment - skip GUI operations
+            # Skip GUI operations in headless environments
+            if os.getenv("DISPLAY") or os.getenv("STREAMLIT_SERVER_HEADLESS") != "true":
+                try:
+                    opencv_img = np.array(image)
+                    opencv_img = opencv_img[:, :, ::-1].copy()
+                    cv2.imshow(f"input image: {file_path}", opencv_img)
+                    cv2.waitKey(0)
+                except (cv2.error, AttributeError):
+                    # Headless environment - skip GUI operations
+                    print(f"Debug mode: Skipping image display (headless environment)")
+            else:
                 print(f"Debug mode: Skipping image display (headless environment)")
 
         if enable_price_count:
